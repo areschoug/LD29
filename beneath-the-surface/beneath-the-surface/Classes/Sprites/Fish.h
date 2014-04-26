@@ -21,6 +21,7 @@ public:
     
     float getScore();
     void setScore(float score);
+    void setPreventAnimations(bool preventAnimations);
     
 protected:
     void setup();
@@ -38,6 +39,7 @@ private:
     bool _outsideGameBounds;
     int _currentAnimationPosition;
     float _updateSpriteTicker;
+    bool _preventAnimations;
     
 };
 

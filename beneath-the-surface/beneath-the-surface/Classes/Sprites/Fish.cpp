@@ -47,6 +47,7 @@ void Fish::update(float dt){
 }
 
 void Fish::updateAnimation(float dt){
+    if (_preventAnimations) return;
     if (_animatingImages.size() > 1) {
         _updateSpriteTicker++;
         if (_updateSpriteTicker > _updateSpriteTime) {
@@ -87,4 +88,8 @@ void Fish::setVelocity(cocos2d::Point velocity){
     } else {
         setRotation(angleInDegrees * -1);
     }
+}
+
+void Fish::setPreventAnimations(bool preventAnimations){
+    _preventAnimations = preventAnimations;
 }

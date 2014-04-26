@@ -191,7 +191,7 @@ Only valid for cocos2d-mac. Not supported on cocos2d-ios.
  @since v0.99.5
  */
 #ifndef CC_USE_LA88_LABELS
-#define CC_USE_LA88_LABELS 1
+#define CC_USE_LA88_LABELS 0
 #endif
 
 /** @def CC_SPRITE_DEBUG_DRAW

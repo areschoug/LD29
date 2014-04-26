@@ -93,6 +93,20 @@ bool GameScene::init() {
         this->addChild(_shark);
     }
     
+    {//high score label
+
+        auto label = Label ::createWithTTF("Hello World", "STAN0764.TTF", 24);
+        label->setAlignment(TextHAlignment::LEFT);
+
+        // position the label on the center of the screen
+        label->setPosition(Point(label->getContentSize().width/2,
+                                _visibleSize.height - 20));
+
+        
+        // add the label as a child to this layer
+        this->addChild(label, 1);
+    }
+    
     
     setWaterYPosition(-200);
     
@@ -138,6 +152,7 @@ void GameScene::checkCollision(){
         Fish *f = _fish.at(x);
         if (!_catchedFish) {
             _catchedFish = f;
+            _catchedFish->setPreventAnimations(true);
             _catchedFish->setRotation(_catchedFish->getScaleX() > 0 ? 90 : 270);
         } else if(f->getScore() > _catchedFish->getScore()) {
             f->setScore(f->getScore() + _catchedFish->getScore());
@@ -146,6 +161,7 @@ void GameScene::checkCollision(){
             _catchedFish = NULL;
             
             _catchedFish = f;
+            _catchedFish->setPreventAnimations(true);
             _catchedFish->setRotation(_catchedFish->getScaleX() > 0 ? 90 : 270);
         }
         
@@ -244,7 +260,6 @@ void GameScene::update(float dt){
         } else {
             if(_catchedFish){
                 removeCatch(true, false);
-                _catchedFish->setRotation(0);
                 
 
             }
@@ -277,15 +292,19 @@ void GameScene::update(float dt){
 
 void GameScene::removeCatch(bool alive, bool getScore){
     
-    if (!alive) {
+    if (alive) {
+        _catchedFish->setPreventAnimations(false);
+        _catchedFish->setRotation(0);
+    } else {
         _fish.erase(std::remove(_fish.begin(), _fish.end(), _catchedFish), _fish.end());
         _catchedFish->removeFromParent();
+    
     }
     
     if (getScore) {
         //TODO: give score here
     }
-    
+
     _catchedFish = NULL;
     _forceSharkDirection = true;
     _shark->resetAnimation();

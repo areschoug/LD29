@@ -48,7 +48,7 @@ void StandardFish::setup(){
             setColor(Color3B(98,41,168));
             break;
         case 1:
-            setColor(Color3B(98,168,41));
+            setColor(Color3B(218,41,41));
             break;
         case 2:
             setColor(Color3B(200,200,0));
