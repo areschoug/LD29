@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "Fisherman.h"
+#include "Fish.h"
 
 
 
@@ -34,17 +35,24 @@ private:
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event *event);
     
     void setWaterYPosition(float y);
-    
+    void checkCollision();
     
     cocos2d::Size _visibleSize;
     
     cocos2d::Sprite *_waterContainer;
+    cocos2d::Sprite *_waterForegorundContainer;
     cocos2d::Sprite *_waterBackground;
     cocos2d::Sprite *_waterForeground;
     
+    Fish *_catchedFish;
+    
     Fisherman *_fisherman;
+    std::vector<Fish*> _fish;
     
     BoatDirection _boatDirection;
+    
+    float _fishAddTicker;
+    float _turtleAddTicker;
     
 };
 

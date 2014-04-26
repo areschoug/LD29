@@ -21,7 +21,6 @@ typedef enum {
     ThrowStateNone,
     ThrowStatePower,
     ThrowStateThrowing,
-    ThrowStateThrown,
 } ThrowState;
 
 class Fisherman : public cocos2d::Sprite {
@@ -37,7 +36,9 @@ public:
     
     BoatDirection getBoatDirection();
     void setBoatDirection(BoatDirection boatDirection);
-    
+
+    ThrowState getThrowState();
+    cocos2d::Point getHookWorldPoint();
     
     
 private:
@@ -47,7 +48,13 @@ private:
     void resetRope();
     
     std::vector<cocos2d::Sprite*> _ropeSprites;
+    std::vector<cocos2d::Sprite*> _underWaterRopeSprites;
     float _power;
+    float _underWaterAddTimer;
+    cocos2d::Sprite *_underwaterLine;
+    bool _reeling;
+    
+    cocos2d::Point _hookWorldPoint;
     
     
     

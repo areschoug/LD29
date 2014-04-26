@@ -39,6 +39,20 @@
 		3028F52C190BA8F000DC5349 /* fishing_rod.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F52A190BA8F000DC5349 /* fishing_rod.png */; };
 		3028F52E190BADC600DC5349 /* fishing_rod_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F52D190BADC600DC5349 /* fishing_rod_normal.png */; };
 		3028F52F190BADC600DC5349 /* fishing_rod_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F52D190BADC600DC5349 /* fishing_rod_normal.png */; };
+		3028F532190BCC3900DC5349 /* Fish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F530190BCC3900DC5349 /* Fish.cpp */; };
+		3028F533190BCC3900DC5349 /* Fish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F530190BCC3900DC5349 /* Fish.cpp */; };
+		3028F537190BD1DC00DC5349 /* turtle_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F535190BD1DC00DC5349 /* turtle_2.png */; };
+		3028F538190BD1DC00DC5349 /* turtle_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F535190BD1DC00DC5349 /* turtle_2.png */; };
+		3028F539190BD1DC00DC5349 /* turtle_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F536190BD1DC00DC5349 /* turtle_1.png */; };
+		3028F53A190BD1DC00DC5349 /* turtle_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F536190BD1DC00DC5349 /* turtle_1.png */; };
+		3028F53E190BE71C00DC5349 /* StandardFish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F53C190BE71C00DC5349 /* StandardFish.cpp */; };
+		3028F53F190BE71C00DC5349 /* StandardFish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F53C190BE71C00DC5349 /* StandardFish.cpp */; };
+		3028F542190BE80000DC5349 /* standard_fish_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F540190BE80000DC5349 /* standard_fish_2.png */; };
+		3028F543190BE80000DC5349 /* standard_fish_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F540190BE80000DC5349 /* standard_fish_2.png */; };
+		3028F544190BE80000DC5349 /* standard_fish_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F541190BE80000DC5349 /* standard_fish_1.png */; };
+		3028F545190BE80000DC5349 /* standard_fish_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F541190BE80000DC5349 /* standard_fish_1.png */; };
+		3028F548190BED5C00DC5349 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F546190BED5C00DC5349 /* Turtle.cpp */; };
+		3028F549190BED5C00DC5349 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F546190BED5C00DC5349 /* Turtle.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -252,6 +266,16 @@
 		3028F527190BA12A00DC5349 /* fisherman_move.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fisherman_move.png; sourceTree = "<group>"; };
 		3028F52A190BA8F000DC5349 /* fishing_rod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishing_rod.png; sourceTree = "<group>"; };
 		3028F52D190BADC600DC5349 /* fishing_rod_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishing_rod_normal.png; sourceTree = "<group>"; };
+		3028F530190BCC3900DC5349 /* Fish.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fish.cpp; sourceTree = "<group>"; };
+		3028F531190BCC3900DC5349 /* Fish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fish.h; sourceTree = "<group>"; };
+		3028F535190BD1DC00DC5349 /* turtle_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtle_2.png; sourceTree = "<group>"; };
+		3028F536190BD1DC00DC5349 /* turtle_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtle_1.png; sourceTree = "<group>"; };
+		3028F53C190BE71C00DC5349 /* StandardFish.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StandardFish.cpp; sourceTree = "<group>"; };
+		3028F53D190BE71C00DC5349 /* StandardFish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardFish.h; sourceTree = "<group>"; };
+		3028F540190BE80000DC5349 /* standard_fish_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standard_fish_2.png; sourceTree = "<group>"; };
+		3028F541190BE80000DC5349 /* standard_fish_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standard_fish_1.png; sourceTree = "<group>"; };
+		3028F546190BED5C00DC5349 /* Turtle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Turtle.cpp; sourceTree = "<group>"; };
+		3028F547190BED5C00DC5349 /* Turtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Turtle.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -456,11 +480,36 @@
 		3028F51F190B914000DC5349 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				3028F53B190BD1E200DC5349 /* Fish */,
 				3028F520190B917400DC5349 /* Fisherman.cpp */,
 				3028F521190B917400DC5349 /* Fisherman.h */,
+				3028F530190BCC3900DC5349 /* Fish.cpp */,
+				3028F531190BCC3900DC5349 /* Fish.h */,
 			);
 			name = Sprites;
 			path = ../Classes/Sprites;
+			sourceTree = "<group>";
+		};
+		3028F534190BD1CE00DC5349 /* Fish */ = {
+			isa = PBXGroup;
+			children = (
+				3028F540190BE80000DC5349 /* standard_fish_2.png */,
+				3028F541190BE80000DC5349 /* standard_fish_1.png */,
+				3028F535190BD1DC00DC5349 /* turtle_2.png */,
+				3028F536190BD1DC00DC5349 /* turtle_1.png */,
+			);
+			path = Fish;
+			sourceTree = "<group>";
+		};
+		3028F53B190BD1E200DC5349 /* Fish */ = {
+			isa = PBXGroup;
+			children = (
+				3028F53C190BE71C00DC5349 /* StandardFish.cpp */,
+				3028F53D190BE71C00DC5349 /* StandardFish.h */,
+				3028F546190BED5C00DC5349 /* Turtle.cpp */,
+				3028F547190BED5C00DC5349 /* Turtle.h */,
+			);
+			path = Fish;
 			sourceTree = "<group>";
 		};
 		503AE0F517EB97AB00D1A890 /* Icons */ = {
@@ -511,6 +560,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3028F534190BD1CE00DC5349 /* Fish */,
 				3028F52D190BADC600DC5349 /* fishing_rod_normal.png */,
 				3028F52A190BA8F000DC5349 /* fishing_rod.png */,
 				3028F527190BA12A00DC5349 /* fisherman_move.png */,
@@ -688,6 +738,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3028F544190BE80000DC5349 /* standard_fish_1.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -699,6 +750,8 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				3028F539190BD1DC00DC5349 /* turtle_1.png in Resources */,
+				3028F537190BD1DC00DC5349 /* turtle_2.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				3028F52E190BADC600DC5349 /* fishing_rod_normal.png in Resources */,
@@ -709,6 +762,7 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				3028F542190BE80000DC5349 /* standard_fish_2.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				3028F528190BA12A00DC5349 /* fisherman_move.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -724,10 +778,14 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				5087E75417EB910900C73F5D /* CloseSelected.png in Resources */,
 				3028F526190B933100DC5349 /* fisherman_none.png in Resources */,
+				3028F543190BE80000DC5349 /* standard_fish_2.png in Resources */,
 				3028F529190BA12A00DC5349 /* fisherman_move.png in Resources */,
+				3028F538190BD1DC00DC5349 /* turtle_2.png in Resources */,
 				5087E75517EB910900C73F5D /* HelloWorld.png in Resources */,
 				3028F52C190BA8F000DC5349 /* fishing_rod.png in Resources */,
+				3028F53A190BD1DC00DC5349 /* turtle_1.png in Resources */,
 				3028F51D190B8AD800DC5349 /* blank.png in Resources */,
+				3028F545190BE80000DC5349 /* standard_fish_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,9 +799,12 @@
 				3028F522190B917400DC5349 /* Fisherman.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				3028F532190BCC3900DC5349 /* Fish.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				3028F548190BED5C00DC5349 /* Turtle.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				3028F512190B86EF00DC5349 /* GameScene.cpp in Sources */,
+				3028F53E190BE71C00DC5349 /* StandardFish.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,8 +814,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3028F523190B917400DC5349 /* Fisherman.cpp in Sources */,
+				3028F53F190BE71C00DC5349 /* StandardFish.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
+				3028F549190BED5C00DC5349 /* Turtle.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
+				3028F533190BCC3900DC5349 /* Fish.cpp in Sources */,
 				3028F513190B86EF00DC5349 /* GameScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 			);
