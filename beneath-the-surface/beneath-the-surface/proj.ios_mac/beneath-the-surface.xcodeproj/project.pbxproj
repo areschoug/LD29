@@ -29,6 +29,16 @@
 		3028F513190B86EF00DC5349 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F510190B86EF00DC5349 /* GameScene.cpp */; };
 		3028F51C190B8AD800DC5349 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F51B190B8AD800DC5349 /* blank.png */; };
 		3028F51D190B8AD800DC5349 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F51B190B8AD800DC5349 /* blank.png */; };
+		3028F522190B917400DC5349 /* Fisherman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F520190B917400DC5349 /* Fisherman.cpp */; };
+		3028F523190B917400DC5349 /* Fisherman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3028F520190B917400DC5349 /* Fisherman.cpp */; };
+		3028F525190B933100DC5349 /* fisherman_none.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F524190B933100DC5349 /* fisherman_none.png */; };
+		3028F526190B933100DC5349 /* fisherman_none.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F524190B933100DC5349 /* fisherman_none.png */; };
+		3028F528190BA12A00DC5349 /* fisherman_move.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F527190BA12A00DC5349 /* fisherman_move.png */; };
+		3028F529190BA12A00DC5349 /* fisherman_move.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F527190BA12A00DC5349 /* fisherman_move.png */; };
+		3028F52B190BA8F000DC5349 /* fishing_rod.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F52A190BA8F000DC5349 /* fishing_rod.png */; };
+		3028F52C190BA8F000DC5349 /* fishing_rod.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F52A190BA8F000DC5349 /* fishing_rod.png */; };
+		3028F52E190BADC600DC5349 /* fishing_rod_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F52D190BADC600DC5349 /* fishing_rod_normal.png */; };
+		3028F52F190BADC600DC5349 /* fishing_rod_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3028F52D190BADC600DC5349 /* fishing_rod_normal.png */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -236,6 +246,12 @@
 		3028F511190B86EF00DC5349 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		3028F518190B880200DC5349 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		3028F51B190B8AD800DC5349 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
+		3028F520190B917400DC5349 /* Fisherman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fisherman.cpp; sourceTree = "<group>"; };
+		3028F521190B917400DC5349 /* Fisherman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fisherman.h; sourceTree = "<group>"; };
+		3028F524190B933100DC5349 /* fisherman_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fisherman_none.png; sourceTree = "<group>"; };
+		3028F527190BA12A00DC5349 /* fisherman_move.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fisherman_move.png; sourceTree = "<group>"; };
+		3028F52A190BA8F000DC5349 /* fishing_rod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishing_rod.png; sourceTree = "<group>"; };
+		3028F52D190BADC600DC5349 /* fishing_rod_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishing_rod_normal.png; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -344,6 +360,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3028F51F190B914000DC5349 /* Sprites */,
 				3028F519190B884000DC5349 /* Scenes */,
 				3028F517190B87EF00DC5349 /* Global */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
@@ -436,6 +453,16 @@
 			path = ../Classes/Scenes;
 			sourceTree = "<group>";
 		};
+		3028F51F190B914000DC5349 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				3028F520190B917400DC5349 /* Fisherman.cpp */,
+				3028F521190B917400DC5349 /* Fisherman.h */,
+			);
+			name = Sprites;
+			path = ../Classes/Sprites;
+			sourceTree = "<group>";
+		};
 		503AE0F517EB97AB00D1A890 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +511,10 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3028F52D190BADC600DC5349 /* fishing_rod_normal.png */,
+				3028F52A190BA8F000DC5349 /* fishing_rod.png */,
+				3028F527190BA12A00DC5349 /* fisherman_move.png */,
+				3028F524190B933100DC5349 /* fisherman_none.png */,
 				3028F51B190B8AD800DC5349 /* blank.png */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
@@ -664,11 +695,14 @@
 				3028F51C190B8AD800DC5349 /* blank.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				3028F52B190BA8F000DC5349 /* fishing_rod.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				3028F52E190BADC600DC5349 /* fishing_rod_normal.png in Resources */,
+				3028F525190B933100DC5349 /* fisherman_none.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
@@ -676,6 +710,7 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				3028F528190BA12A00DC5349 /* fisherman_move.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,9 +720,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E75317EB910900C73F5D /* CloseNormal.png in Resources */,
+				3028F52F190BADC600DC5349 /* fishing_rod_normal.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				5087E75417EB910900C73F5D /* CloseSelected.png in Resources */,
+				3028F526190B933100DC5349 /* fisherman_none.png in Resources */,
+				3028F529190BA12A00DC5349 /* fisherman_move.png in Resources */,
 				5087E75517EB910900C73F5D /* HelloWorld.png in Resources */,
+				3028F52C190BA8F000DC5349 /* fishing_rod.png in Resources */,
 				3028F51D190B8AD800DC5349 /* blank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,6 +738,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3028F522190B917400DC5349 /* Fisherman.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
@@ -712,6 +752,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3028F523190B917400DC5349 /* Fisherman.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				3028F513190B86EF00DC5349 /* GameScene.cpp in Sources */,

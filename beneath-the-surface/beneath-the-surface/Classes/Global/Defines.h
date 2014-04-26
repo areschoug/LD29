@@ -16,6 +16,10 @@
 #define kZBackground -101
 #define kZWaterBackground -100
 //place stuff here
+#define kZRod -1
 #define kZWaterForeground 100
+
+
+#define kSpriteScaleFactor 4
 
 #endif
