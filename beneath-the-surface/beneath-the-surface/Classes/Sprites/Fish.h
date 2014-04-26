@@ -24,15 +24,17 @@ public:
     
 protected:
     void setup();
+    void updateAnimation(float dt);
     
     std::vector<std::string> _animatingImages;
     float _updateSpriteTime;
     
-    cocos2d::Point _velocity;
     cocos2d::Size _visibleSize;
     float _score;
     
+    
 private:
+    cocos2d::Point _velocity;
     bool _outsideGameBounds;
     int _currentAnimationPosition;
     float _updateSpriteTicker;

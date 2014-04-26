@@ -12,8 +12,7 @@
 #include "cocos2d.h"
 #include "Fisherman.h"
 #include "Fish.h"
-
-
+#include "Shark.h"
 
 class GameScene : public cocos2d::Layer
 {
@@ -37,6 +36,10 @@ private:
     void setWaterYPosition(float y);
     void checkCollision();
     
+    bool intersectRect(cocos2d::Rect r1, cocos2d::Rect r2);
+    
+    void removeCatch(bool alive, bool getScore);
+    
     cocos2d::Size _visibleSize;
     
     cocos2d::Sprite *_waterContainer;
@@ -45,6 +48,9 @@ private:
     cocos2d::Sprite *_waterForeground;
     
     Fish *_catchedFish;
+    Shark *_shark;
+    bool _forceSharkDirection
+    ;
     
     Fisherman *_fisherman;
     std::vector<Fish*> _fish;

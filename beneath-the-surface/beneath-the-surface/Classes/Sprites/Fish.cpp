@@ -39,8 +39,14 @@ void Fish::update(float dt){
             _outsideGameBounds = true;
         }
         
+
+        
     }
     
+    updateAnimation(dt);
+}
+
+void Fish::updateAnimation(float dt){
     if (_animatingImages.size() > 1) {
         _updateSpriteTicker++;
         if (_updateSpriteTicker > _updateSpriteTime) {
@@ -71,4 +77,14 @@ cocos2d::Point Fish::getVelocity(){
 
 void Fish::setVelocity(cocos2d::Point velocity){
     _velocity = velocity;
+
+    
+    float deltaY = velocity.y;
+    float deltaX = velocity.x;
+    float angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
+    if (velocity.x < 0) {
+        setRotation((angleInDegrees - 180) * -1);
+    } else {
+        setRotation(angleInDegrees * -1);
+    }
 }

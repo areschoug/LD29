@@ -25,17 +25,19 @@ StandardFish* StandardFish::create() {
 void StandardFish::setup(){
     Fish::setup();
 
+
+    float f = map((rand() % 10), 0, 10, 0.6, 1.0);
     
     if (rand() % 2) {
-        setPosition(Point(-100, (rand() % 300) + 50));
-        _velocity = Point(map(rand() % 10, 0, 10, 30, 60), (rand() % 20) - 10);
+        setPosition(Point(-100, (rand() % 100) + map(f, 0.6, 1.0, 250, 50)));
+        setVelocity(Point(map(rand() % 10, 0, 10, 30, 60), (rand() % 8) - 4));
         setScaleX(-1);
     } else {
-        setPosition(Point(_visibleSize.width + 100, (rand() % 300) + 50));
-        _velocity = Point(-map(rand() % 10, 0, 10, 30, 60), (rand() % 20) - 10);
+        setPosition(Point(_visibleSize.width + 100, (rand() % 100) + map(f, 0.6, 1.0, 250, 50)));
+        setVelocity(Point(-map(rand() % 10, 0, 10, 30, 60), (rand() % 8) - 4));
     }
     
-    float f = map((rand() % 10), 0, 10, 0.6, 1.0);
+
     setScaleX(getScaleX() * f);
     setScaleY(f);
     
