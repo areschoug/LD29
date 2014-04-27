@@ -83,7 +83,7 @@ bool MenuScene::init()
     }
     
     {//game play
-        auto label = Label::createWithTTF("GAME PLAY", "STAN0764.TTF", 22);
+        auto label = Label::createWithTTF("GAMEPLAY", "STAN0764.TTF", 22);
         
         label->setPosition(Point(visibleSize.width/2, 300));
         label->setColor(Color3B(250,223,117));
