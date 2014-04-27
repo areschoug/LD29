@@ -15,6 +15,12 @@
 #include "Shark.h"
 #include "Cloud.h"
 
+typedef enum {
+    TouchLeft,
+    TouchRight,
+    TouchMiddle,
+}TouchLocation;
+
 class GameScene : public cocos2d::Layer
 {
     
@@ -78,6 +84,12 @@ private:
     
     int _seconds;
 
+    void touchScreens();
+    virtual bool onTouchBegan( cocos2d::Touch *touches, cocos2d::Event * event ); // When touches are started.
+    virtual void onTouchMoved( cocos2d::Touch *touches, cocos2d::Event * event ); // When touches are moved
+    virtual void onTouchEnded( cocos2d::Touch *touches, cocos2d::Event * event ); // When touches are ended.
+
+    TouchLocation _touchLocation;
     
 };
 

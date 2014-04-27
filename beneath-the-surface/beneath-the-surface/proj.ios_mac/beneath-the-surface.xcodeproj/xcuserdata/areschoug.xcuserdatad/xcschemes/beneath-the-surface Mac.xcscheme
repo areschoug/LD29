@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5087E73D17EB910900C73F5D"
-               BuildableName = "beneath-the-surface Mac.app"
+               BuildableName = "FISH!.app"
                BlueprintName = "beneath-the-surface Mac"
                ReferencedContainer = "container:beneath-the-surface.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5087E73D17EB910900C73F5D"
-            BuildableName = "beneath-the-surface Mac.app"
+            BuildableName = "FISH!.app"
             BlueprintName = "beneath-the-surface Mac"
             ReferencedContainer = "container:beneath-the-surface.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5087E73D17EB910900C73F5D"
-            BuildableName = "beneath-the-surface Mac.app"
+            BuildableName = "FISH!.app"
             BlueprintName = "beneath-the-surface Mac"
             ReferencedContainer = "container:beneath-the-surface.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5087E73D17EB910900C73F5D"
-            BuildableName = "beneath-the-surface Mac.app"
+            BuildableName = "FISH!.app"
             BlueprintName = "beneath-the-surface Mac"
             ReferencedContainer = "container:beneath-the-surface.xcodeproj">
          </BuildableReference>

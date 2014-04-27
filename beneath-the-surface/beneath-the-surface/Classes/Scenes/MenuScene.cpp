@@ -72,6 +72,10 @@ bool MenuScene::init()
     {//control
         auto label = Label::createWithTTF("left, right and space", "STAN0764.TTF", 14);
         
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        label->setString("left, right and center");
+#endif
+        
         label->setPosition(Point(visibleSize.width/2, visibleSize.height - 270));
         label->setColor(Color3B(250,223,117));
         this->addChild(label, 1);
@@ -87,10 +91,12 @@ bool MenuScene::init()
         
     }
     
+    float extra = (visibleSize.width-640)/2;
+    
     {//Game play
     
         StandardFish *fish = StandardFish::create();
-        fish->setPosition(Point(90, 250));
+        fish->setPosition(Point(90 + extra, 250));
         fish->setRotation(0);
         fish->setScale(-1, 1);
         this->addChild(fish);
@@ -102,7 +108,7 @@ bool MenuScene::init()
     {//control
         auto label = Label::createWithTTF("<", "STAN0764.TTF", 28);
         
-        label->setPosition(Point(132, 250));
+        label->setPosition(Point(132 + extra, 250));
         label->setColor(Color3B(250,223,117));
         this->addChild(label, 1);
         
@@ -111,7 +117,7 @@ bool MenuScene::init()
     {//Game play
         
         StandardFish *fish = StandardFish::create();
-        fish->setPosition(Point(155, 250));
+        fish->setPosition(Point(155 + extra, 250));
         fish->setRotation(90);
         fish->setScale(1, 1);
         this->addChild(fish);
@@ -123,7 +129,7 @@ bool MenuScene::init()
     {//Game play
         
         StandardFish *fish = StandardFish::create();
-        fish->setPosition(Point(210, 250));
+        fish->setPosition(Point(210 + extra, 250));
         fish->setRotation(0);
         fish->setScale(-1, 1);
         this->addChild(fish);
@@ -134,7 +140,7 @@ bool MenuScene::init()
     {//control
         auto label = Label::createWithTTF("<", "STAN0764.TTF", 28);
         
-        label->setPosition(Point(252, 250));
+        label->setPosition(Point(252 + extra, 250));
         label->setColor(Color3B(250,223,117));
         this->addChild(label, 1);
         
@@ -143,7 +149,7 @@ bool MenuScene::init()
     {//Game play
         
         Turtle *fish = Turtle::create();
-        fish->setPosition(Point(275, 250));
+        fish->setPosition(Point(275 + extra, 250));
         fish->setRotation(90);
         fish->setScale(1, 1);
         this->addChild(fish);
@@ -153,7 +159,7 @@ bool MenuScene::init()
     {//Game play
         
         Shark *fish = Shark::create();
-        fish->setPosition(Point(345, 250));
+        fish->setPosition(Point(345 + extra, 250));
         fish->setRotation(0);
         fish->setScale(-1, 1);
         this->addChild(fish);
@@ -164,7 +170,7 @@ bool MenuScene::init()
     {//control
         auto label = Label::createWithTTF("<", "STAN0764.TTF", 28);
         
-        label->setPosition(Point(400, 250));
+        label->setPosition(Point(400 + extra, 250));
         label->setColor(Color3B(250,223,117));
         this->addChild(label, 1);
         
@@ -173,7 +179,7 @@ bool MenuScene::init()
     {//Game play
         
         StandardFish *fish = StandardFish::create();
-        fish->setPosition(Point(425, 250));
+        fish->setPosition(Point(425 + extra, 250));
         fish->setRotation(90);
         fish->setScale(1, 1);
         this->addChild(fish);
@@ -183,7 +189,7 @@ bool MenuScene::init()
     {//Game play
         
         Shark *fish = Shark::create();
-        fish->setPosition(Point(490, 250));
+        fish->setPosition(Point(490 + extra, 250));
         fish->setRotation(0);
         fish->setScale(-1, 1);
         this->addChild(fish);
@@ -195,7 +201,7 @@ bool MenuScene::init()
     {//control
         auto label = Label::createWithTTF("<", "STAN0764.TTF", 28);
         
-        label->setPosition(Point(545, 250));
+        label->setPosition(Point(545 + extra, 250));
         label->setColor(Color3B(250,223,117));
         this->addChild(label, 1);
         
@@ -204,7 +210,7 @@ bool MenuScene::init()
     {//Game play
         
         Turtle *fish = Turtle::create();
-        fish->setPosition(Point(580, 250));
+        fish->setPosition(Point(580 + extra, 250));
         fish->setRotation(90);
         fish->setScale(1, 1);
         this->addChild(fish);
@@ -215,7 +221,7 @@ bool MenuScene::init()
     {//credit
         auto label = Label::createWithTTF("ludum dare 29\n@yo_pox", "STAN0764.TTF", 14);
         
-        label->setPosition(Point(76, 160));
+        label->setPosition(Point(76 + extra, 160));
         label->setColor(Color3B(250,223,117));
         label->setAnchorPoint(Point(0, 0.5));
         

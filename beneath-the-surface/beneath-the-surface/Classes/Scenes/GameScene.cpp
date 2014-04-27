@@ -84,10 +84,10 @@ bool GameScene::init() {
         this->addChild(_waterForegorundContainer,kZWaterForeground);
     }
     
-    
     {
         this->setKeyboardEnabled(true);
         scheduleUpdate();
+        this->touchScreens();
     }
     
     {
@@ -123,6 +123,8 @@ bool GameScene::init() {
         _timeLabel->setString("");
         
     }
+    
+    
     
     {
         Sprite *ground = Sprite::create("blank.png");
@@ -544,6 +546,21 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, cocos2d::Event *ev
     
 }
 
+void GameScene::touchScreens(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    auto listener = EventListenerTouchOneByOne::create();
+    
+    listener->setSwallowTouches(true);
+    
+    listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
+    listener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
+    listener->onTouchEnded = CC_CALLBACK_2(GameScene::onTouchEnded, this);
+    listener->onTouchCancelled = listener->onTouchEnded;
+    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+#endif
+}
+
 
 bool GameScene::intersectRect(Rect r1, Rect r2) {
     
@@ -551,5 +568,54 @@ bool GameScene::intersectRect(Rect r1, Rect r2) {
              r2.getMaxX() < r1.getMinX() ||
              r2.getMinY() > r1.getMaxY() ||
              r2.getMaxY() < r1.getMinY());
+}
+
+bool GameScene::onTouchBegan( Touch *pTouches, Event *pEvent ){
+    
+    Point touch = pTouches->getLocation();
+    
+    if (touch.x < (_visibleSize.width/10)) {
+        _touchLocation = TouchLeft;
+        _fisherman->setBoatDirection(BoatDirectionLeft);
+    } else if(touch.x > ((_visibleSize.width/10) * 9)){
+        _touchLocation = TouchRight;
+        _fisherman->setBoatDirection(BoatDirectionRight);
+    } else {
+        _touchLocation = TouchMiddle;
+        if (_playing) {
+            _fisherman->doPower();
+        }
+    }
+    
+    
+    return true;
+
+}
+
+void GameScene::onTouchMoved( Touch *pTouches, Event *pEvent )
+{
+
+}
+
+void GameScene::onTouchEnded( Touch *pTouches, Event *pEvent )
+{
+    
+    
+    if (_touchLocation == TouchLeft) {
+        if (_fisherman->getBoatDirection() == BoatDirectionLeft) {
+            _fisherman->setBoatDirection(BoatDirectionNone);
+        }
+    } else if(_touchLocation == TouchRight){
+        if (_fisherman->getBoatDirection() == BoatDirectionRight) {
+            _fisherman->setBoatDirection(BoatDirectionNone);
+        }
+    } else {
+        if (_playing) {
+            _fisherman->doThrow();
+        }
+    }
+
+
+
 }
 
