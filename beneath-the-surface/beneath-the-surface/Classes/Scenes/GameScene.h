@@ -13,6 +13,7 @@
 #include "Fisherman.h"
 #include "Fish.h"
 #include "Shark.h"
+#include "Cloud.h"
 
 class GameScene : public cocos2d::Layer
 {
@@ -24,7 +25,9 @@ public:
     
     
     void update(float dt);    
-    
+    void play();
+    void stop();
+    bool getPlaying();
     
     CREATE_FUNC(GameScene);
     
@@ -35,6 +38,7 @@ private:
     
     void setWaterYPosition(float y);
     void checkCollision();
+    void updateScore();
     
     bool intersectRect(cocos2d::Rect r1, cocos2d::Rect r2);
     
@@ -49,16 +53,31 @@ private:
     
     Fish *_catchedFish;
     Shark *_shark;
-    bool _forceSharkDirection
-    ;
+    bool _forceSharkDirection;
     
     Fisherman *_fisherman;
     std::vector<Fish*> _fish;
     
+    std::vector<Cloud*> _clouds;
+    
     BoatDirection _boatDirection;
     
+    bool _playing;
     float _fishAddTicker;
     float _turtleAddTicker;
+    float _score;
+    float _currentScore;
+    float _scoreMultiplier;
+    float _time;
+    
+    cocos2d::Label *_highscoreLabel;
+    cocos2d::Label *_currentLabel;
+    cocos2d::Label *_timeLabel;
+    
+    cocos2d::Layer *_menuLayer;
+    
+    int _seconds;
+
     
 };
 

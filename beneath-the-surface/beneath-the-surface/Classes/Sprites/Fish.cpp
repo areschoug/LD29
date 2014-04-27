@@ -23,7 +23,7 @@ Fish* Fish::create() {
 
 
 void Fish::setup(){
-
+    _score = 0;
     _updateSpriteTime = 15;
     _visibleSize = Director::getInstance()->getVisibleSize();
 }
@@ -92,4 +92,12 @@ void Fish::setVelocity(cocos2d::Point velocity){
 
 void Fish::setPreventAnimations(bool preventAnimations){
     _preventAnimations = preventAnimations;
+}
+
+void Fish::setIsCatched(bool catched){
+    _catched = catched;
+}
+
+bool Fish::getIsCatched(){
+    return _catched;
 }

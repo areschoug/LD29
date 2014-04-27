@@ -7,6 +7,7 @@
 //
 
 #include "Shark.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -33,6 +34,8 @@ void Shark::setup(){
         setVelocity(Point(-65, (rand() % 20) - 10));
     }
     
+
+    
     setColor(Color3B(60,60,60));
     
     _score = 250;
@@ -50,4 +53,47 @@ void Shark::resetAnimation(){
 
 void Shark::update(float dt){
     updateAnimation(dt);
+    
+ 
+}
+
+void Shark::hurtUpdate(float dt){
+    if (_hurtTicker > 0) {
+        _hurtTicker -= dt;
+        _hurtBlinkTicker -= dt;
+        
+        if (_hurtBlinkTicker > 0) {
+            setColor(Color3B(60,60,60));
+        } else {
+            setColor(Color3B(255,60,60));
+            if (_hurtBlinkTicker < -0.15) {
+                _hurtBlinkTicker = 0.15;
+                if(!_quiet){
+                    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("shark_hurt.wav");
+                }
+            }
+        }
+        
+        if (_hurtTicker < 0) {
+            removeHurt();
+        }
+    }
+}
+
+void Shark::removeHurt(){
+    _hurt = false;
+    setColor(Color3B(60,60,60));
+}
+
+void Shark::setHurt(){
+    _hurt = true;
+    _hurtTicker = 8;
+}
+
+void Shark::setQuiet(bool quiet){
+    _quiet = quiet;
+}
+
+bool Shark::getHurt(){
+    return _hurt;
 }

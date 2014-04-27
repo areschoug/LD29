@@ -8,6 +8,7 @@
 
 #include "Fisherman.h"
 #include "Defines.h"
+#include "SimpleAudioEngine.h"
 
 #define kSpeed 200
 
@@ -57,11 +58,12 @@ void Fisherman::update(float dt){
             if (_reeling) {
                 _underWaterAddTimer -= (dt * 80);
             } else {
-                _underWaterAddTimer += (dt * 80);
+                if (_hookWorldPoint.y > 16) {
+                    _underWaterAddTimer += (dt * 80);
+                }
             }
             
             _hookWorldPoint = convertToWorldSpace(Point(_underwaterLine->getPositionX(), _underwaterLine->getPositionY() - (_underwaterLine->getContentSize().height * _underwaterLine->getScaleY())));
-
             _underwaterLine->setScaleY(_underWaterAddTimer);
             
             if (_underWaterAddTimer <= 0) {
@@ -182,7 +184,9 @@ void Fisherman::setThrowState(ThrowState state){
         _rod->setTexture("fishing_rod.png");
         _rod->setPosition(_rod->getContentSize().width + 14, 40);
         _rod->setScaleX(1);
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("throw.wav");                
     } else if (state == ThrowStateThrowing){
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("throw.wav");        
         _rod->setRotation(0);
         _rod->setPosition(14, 40);
         _rod->setScaleX(-1);

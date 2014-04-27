@@ -10,6 +10,9 @@
 #include "Defines.h"
 #include "StandardFish.h"
 #include "Turtle.h"
+#include "SimpleAudioEngine.h"
+#include "MenuScene.h"
+
 
 USING_NS_CC;
 
@@ -95,24 +98,104 @@ bool GameScene::init() {
     
     {//high score label
 
-        auto label = Label ::createWithTTF("Hello World", "STAN0764.TTF", 24);
-        label->setAlignment(TextHAlignment::LEFT);
-
-        // position the label on the center of the screen
-        label->setPosition(Point(label->getContentSize().width/2,
-                                _visibleSize.height - 20));
-
+        _highscoreLabel = Label::createWithTTF("000000", "STAN0764.TTF", 18);
+        _highscoreLabel->setAlignment(TextHAlignment::LEFT);
+        _highscoreLabel->setString("");
         
-        // add the label as a child to this layer
-        this->addChild(label, 1);
+        _highscoreLabel->setPosition(Point(10, _visibleSize.height - 20));
+        _highscoreLabel->setAnchorPoint(Point(0,0.5));
+        this->addChild(_highscoreLabel, 1);
+        
+        _currentLabel = Label::createWithTTF("000000", "STAN0764.TTF", 14);
+        _currentLabel->setAlignment(TextHAlignment::LEFT);
+        _currentLabel->setPosition(Point(10, _visibleSize.height - 40));
+        _currentLabel->setAnchorPoint(Point(0,0.5));
+        _currentLabel->setColor(Color3B(255,225,117));
+        this->addChild(_currentLabel, 1);
+        _currentLabel->setString("");
+        
+        
+        _timeLabel = Label::createWithTTF("", "STAN0764.TTF", 18);
+        _timeLabel->setAlignment(TextHAlignment::LEFT);
+        _timeLabel->setPosition(Point(_visibleSize.width - 5, _visibleSize.height - 20));
+        _timeLabel->setAnchorPoint(Point(1, 0.5));
+        this->addChild(_timeLabel, 1);
+        _timeLabel->setString("");
+        
     }
     
+    {
+        Sprite *ground = Sprite::create("blank.png");
+        
+        ground->setPosition(Point(_visibleSize.width/2.0, 4));
+        ground->setColor(Color3B(84,69,8));
+        ground->setScaleX(_visibleSize.width/4);
+        ground->setScaleY(4);
+        
+        this->addChild(ground);
+    }
+    
+    {
+    
+        Cloud *c1 = Cloud::create("cloud_1.png");
+        c1->setPosition(-400, _visibleSize.height - 80);
+        c1->setVelocity(Point(26, 0));
+        this->addChild(c1);
+        _clouds.push_back(c1);
+        
+        Cloud *c2 = Cloud::create("cloud_2.png");
+        c2->setPosition(-10, _visibleSize.height - 50);
+        c2->setVelocity(Point(20, 0));
+        this->addChild(c2);
+        _clouds.push_back(c2);
+        
+        Cloud *c3 = Cloud::create("cloud_3.png");
+        c3->setPosition(_visibleSize.width + 300, _visibleSize.height - 40);
+        c3->setVelocity(Point(-20, 0));
+        this->addChild(c3);
+        _clouds.push_back(c3);
+        
+        Cloud *c4 = Cloud::create("cloud_4.png");
+        c4->setPosition(_visibleSize.width + 40, _visibleSize.height - 70);
+        c4->setVelocity(Point(-15, 0));
+        this->addChild(c4);
+        _clouds.push_back(c4);
+        
+        
+    }
+    
+    {
+        MenuScene *menu = MenuScene::create();
+        menu->setGameScene(this);
+        this->addChild(menu,9999999);
+        _menuLayer = menu;
+    }
     
     setWaterYPosition(-200);
     
     return true;
 }
 
+bool GameScene::getPlaying(){
+    return _playing;
+}
+
+void GameScene::play(){
+    _playing = true;
+    _currentScore = 0;
+    _score = 0;
+    _scoreMultiplier = 0;
+    _time = 50;
+    updateScore();
+    _menuLayer->runAction(Sequence::createWithTwoActions(DelayTime::create(0), MoveTo::create(0.3, Point(-_visibleSize.width, 0))));
+}
+
+void GameScene::stop(){
+    _fisherman->setBoatDirection(BoatDirectionLeft);
+    _fisherman->setBoatDirection(BoatDirectionNone);
+    _playing = false;
+    _menuLayer->runAction(Sequence::createWithTwoActions(DelayTime::create(0), MoveTo::create(0.3, Point(0, 0))));
+}
 
 void GameScene::setWaterYPosition(float y){
     _waterContainer->setPosition(Point(0, MIN(_fisherman->getContentSize().height, y)));
@@ -125,47 +208,87 @@ void GameScene::checkCollision(){
     
     for (int i = 0; i < _fish.size(); i++) {
         Fish *fish = _fish.at(i);
-        Point fishPoint = fish->getPosition();
-        Size fishSize = Size(fish->getContentSize().width * fabs(fish->getScaleX()), fish->getContentSize().height * fabs(fish->getScaleY()));
-        Point hookpoint = _fisherman->getHookWorldPoint();
-        
-        bool x = false;
-        bool y = false;
-        
-        if (((fishPoint.x - (fishSize.width/2)) < hookpoint.x) &&
-            ((fishPoint.x + (fishSize.width/2)) > hookpoint.x)) {
-            x = true;
-        }
-        
-        if (((fishPoint.y - (fishSize.height/2)) < hookpoint.y) &&
-            ((fishPoint.y + (fishSize.height/2)) > hookpoint.y)) {
-            y = true;
-        }
-        
-        if (x && y) {
-            catched.push_back(i);
+        if (!fish->getIsCatched()) {
+            Point fishPoint = fish->getPosition();
+            Size fishSize = Size(fish->getContentSize().width * fabs(fish->getScaleX()), fish->getContentSize().height * fabs(fish->getScaleY()));
+            Point hookpoint = _fisherman->getHookWorldPoint();
+            
+            bool x = false;
+            bool y = false;
+            
+            if (((fishPoint.x - (fishSize.width/2)) < hookpoint.x) &&
+                ((fishPoint.x + (fishSize.width/2)) > hookpoint.x)) {
+                x = true;
+            }
+            
+            if (((fishPoint.y - (fishSize.height/2)) < hookpoint.y) &&
+                ((fishPoint.y + (fishSize.height/2)) > hookpoint.y)) {
+                y = true;
+            }
+            
+            if (x && y) {
+                catched.push_back(i);
+            }
         }
     }
     
     for (int i = 0; i < catched.size(); i++) {
         int x = catched.at(i);
         Fish *f = _fish.at(x);
-        if (!_catchedFish) {
-            _catchedFish = f;
-            _catchedFish->setPreventAnimations(true);
-            _catchedFish->setRotation(_catchedFish->getScaleX() > 0 ? 90 : 270);
-        } else if(f->getScore() > _catchedFish->getScore()) {
-            f->setScore(f->getScore() + _catchedFish->getScore());
-            _fish.erase(std::remove(_fish.begin(), _fish.end(), _catchedFish), _fish.end());
-            _catchedFish->removeFromParent();
-            _catchedFish = NULL;
-            
-            _catchedFish = f;
-            _catchedFish->setPreventAnimations(true);
-            _catchedFish->setRotation(_catchedFish->getScaleX() > 0 ? 90 : 270);
+        if(f != _catchedFish) {
+            f->setIsCatched(true);
+            if (!_catchedFish) {
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("new_pick_up.wav");
+                _catchedFish = f;
+                _catchedFish->setPreventAnimations(true);
+                _catchedFish->setRotation(_catchedFish->getScaleX() > 0 ? 90 : 270);
+                _scoreMultiplier = 1;
+                
+                _currentScore = _catchedFish->getScore();
+                
+            } else {
+                if (!dynamic_cast<Turtle*>(f)) {
+                    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("new_pick_up.wav");
+                    _scoreMultiplier ++;
+                    
+                    if (f->getScore() > _catchedFish->getScore()) {
+                        //                f->setScore(f->getScore());
+                        _fish.erase(std::remove(_fish.begin(), _fish.end(), _catchedFish), _fish.end());
+                        _catchedFish->removeFromParent();
+                        _catchedFish = NULL;
+                        
+                        
+                        _catchedFish = f;
+                        _currentScore += _catchedFish->getScore();
+                        _catchedFish->setPreventAnimations(true);
+                        _catchedFish->setRotation(_catchedFish->getScaleX() > 0 ? 90 : 270);
+                        
+                    } else {
+                        _currentScore += f->getScore();
+                        _fish.erase(std::remove(_fish.begin(), _fish.end(), f), _fish.end());
+                        f->removeFromParent();
+                        f = NULL;
+                        
+                    }
+
+                }
+                
+                
+            }
+
         }
         
+        
     }
+    
+    if (_currentScore > 0) {
+        char buff[100];
+        sprintf(buff, "%dX%i", (int)roundf(_currentScore),(int)_scoreMultiplier);
+        std::string buffAsStdStr = buff;
+        _currentLabel->setString(buffAsStdStr);
+        
+    }
+    
 }
 
 #pragma mark - game loop
@@ -173,10 +296,42 @@ void GameScene::update(float dt){
 
     _fisherman->update(dt);
 
+    {//time
+        if (_playing) {
+            _time -= dt;
+            int preSec = _seconds;
+            _seconds = (int)roundf(MAX(0, _time));
+            
+            if (_seconds <= 5 && _seconds != preSec) {
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("count_down.wav");
+            }
+            
+            char buff[100];
+            sprintf(buff, "%02d", _seconds);
+            std::string buffAsStdStr = buff;
+            
+            _timeLabel->setString(buffAsStdStr);
+            
+            if (_time < 0) {
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("count_down_done.wav");
+                stop();
+            }
+        }
+    
+    }
+    
+    {//cloud
+        for (int i = 0; i < _clouds.size(); i++) {
+            Cloud *c = _clouds.at(i);
+            c->update(dt);
+        }
+    }
+
     {//shark
+        _shark->hurtUpdate(dt);
+
         
-        
-        if (_catchedFish) {
+        if (_catchedFish && !_shark->getHurt()) {
             _shark->update(dt);
             Point fish = _catchedFish->getPosition();
             Point shark = _shark->getPosition();
@@ -200,8 +355,11 @@ void GameScene::update(float dt){
             
 
             if (intersectRect(_shark->getBoundingBox(), _catchedFish->getBoundingBox())) {
-                log("eat bitch + %i ", rand());
+                if (dynamic_cast<Turtle*>(_catchedFish)) {
+                    _shark->setHurt();
+                }
                 removeCatch(false, false);
+                
             }
             
             
@@ -216,6 +374,9 @@ void GameScene::update(float dt){
                 if (position.y > 250) {
                     _shark->setVelocity(Point(position.x < _visibleSize.width/2 ? xSpeed : -xSpeed ,
                                               -20));
+                } else if(position.y < 20){
+                    _shark->setVelocity(Point(position.x < _visibleSize.width/2 ? xSpeed : -xSpeed,
+                                              10));
                 } else {
                     _shark->setVelocity(Point(position.x < _visibleSize.width/2 ? xSpeed : -xSpeed,
                                               (rand()%2) ? -4 : 4));
@@ -290,20 +451,42 @@ void GameScene::update(float dt){
     
 }
 
+void GameScene::updateScore(){
+    
+    char buff[100];
+    sprintf(buff, "%05d", (int)roundf(_score));
+    std::string buffAsStdStr = buff;
+    
+    _highscoreLabel->setString(buffAsStdStr);
+}
+
 void GameScene::removeCatch(bool alive, bool getScore){
+
+    if (getScore) {
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("add_point.wav");
+        _score += (_currentScore * _scoreMultiplier);
+        updateScore();
+    }
+    _currentScore = 0;
+    _scoreMultiplier = 0;
+    
+    _currentLabel->setString("");
     
     if (alive) {
         _catchedFish->setPreventAnimations(false);
         _catchedFish->setRotation(0);
+        _catchedFish->setIsCatched(false);
     } else {
         _fish.erase(std::remove(_fish.begin(), _fish.end(), _catchedFish), _fish.end());
         _catchedFish->removeFromParent();
     
+        if (!getScore) {
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("eaten.wav");
+        }
+        
     }
     
-    if (getScore) {
-        //TODO: give score here
-    }
+
 
     _catchedFish = NULL;
     _forceSharkDirection = true;
@@ -323,7 +506,9 @@ void GameScene::onKeyPressed(EventKeyboard::KeyCode keyCode, cocos2d::Event *eve
             _fisherman->setBoatDirection(BoatDirectionRight);
             break;
         case EventKeyboard::KeyCode::KEY_SPACE:
-            _fisherman->doPower();
+            if (_playing) {
+                _fisherman->doPower();
+            }
             break;
             
         default:
@@ -349,7 +534,9 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, cocos2d::Event *ev
             }
             break;
         case EventKeyboard::KeyCode::KEY_SPACE:
-            _fisherman->doThrow();
+            if (_playing) {
+                _fisherman->doThrow();
+            }
             break;
         default:
             break;
